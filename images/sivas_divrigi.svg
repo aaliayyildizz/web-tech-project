@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a2a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D2B0D;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="overlay" x1="0%" y1="60%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1B2A;stop-opacity:0" />
+      <stop offset="100%" style="stop-color:#0D1B2A;stop-opacity:0.85" />
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="1.5"/>
+    </filter>
+  </defs>
+  
+  <!-- Arka plan -->
+  <rect width="1200" height="500" fill="url(#bg)"/>
+  
+  <!-- Dekoratif çizgiler -->
+  <line x1="0" y1="300.0" x2="1200" y2="200.0" stroke="#D4AF37" stroke-width="0.5" opacity="0.15"/>
+  <line x1="0" y1="150.0" x2="1200" y2="350.0" stroke="#D4AF37" stroke-width="0.5" opacity="0.1"/>
+  
+  <!-- Grid desen -->
+  <line x1="0" y1="0" x2="0" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="60" y1="0" x2="60" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="120" y1="0" x2="120" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="180" y1="0" x2="180" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="240" y1="0" x2="240" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="300" y1="0" x2="300" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="360" y1="0" x2="360" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="420" y1="0" x2="420" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="480" y1="0" x2="480" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="540" y1="0" x2="540" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="600" y1="0" x2="600" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="660" y1="0" x2="660" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="720" y1="0" x2="720" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="780" y1="0" x2="780" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="840" y1="0" x2="840" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="900" y1="0" x2="900" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="960" y1="0" x2="960" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="1020" y1="0" x2="1020" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="1080" y1="0" x2="1080" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="1140" y1="0" x2="1140" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="1200" y1="0" x2="1200" y2="500" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/>
+  <line x1="0" y1="0" x2="1200" y2="0" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="0" y1="60" x2="1200" y2="60" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="0" y1="120" x2="1200" y2="120" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="0" y1="180" x2="1200" y2="180" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="0" y1="240" x2="1200" y2="240" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="0" y1="300" x2="1200" y2="300" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="0" y1="360" x2="1200" y2="360" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="0" y1="420" x2="1200" y2="420" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/><line x1="0" y1="480" x2="1200" y2="480" stroke="#D4AF37" stroke-width="0.3" opacity="0.06"/>
+  
+  <!-- Merkez dekorasyon -->
+  <circle cx="600" cy="250" r="140.0" fill="none" stroke="#D4AF37" stroke-width="1" opacity="0.12"/>
+  <circle cx="600" cy="250" r="110.0" fill="none" stroke="#D4AF37" stroke-width="0.5" opacity="0.08"/>
+  
+  <!-- Alt gradient overlay -->
+  <rect width="1200" height="500" fill="url(#overlay)"/>
+  
+  <!-- Emoji (büyük) -->
+  <text x="600" y="220" font-size="125" text-anchor="middle" dominant-baseline="middle" opacity="0.35">🕌</text>
+  
+  <!-- Başlık -->
+  <text x="600" y="410" font-size="54" font-family="Georgia, serif" font-weight="bold" fill="#D4AF37" text-anchor="middle" letter-spacing="2">Divriği Ulu Camii ve Darüşşifası</text>
+  
+  <!-- Alt başlık -->
+  <text x="600" y="445" font-size="28" font-family="Arial, sans-serif" fill="#aab8c2" text-anchor="middle">UNESCO Dünya Mirası • 1228 • Sivas</text>
+  
+  <!-- Sol üst köşe dekor -->
+  <text x="30" y="45" font-size="24" font-family="Georgia" fill="#D4AF37" opacity="0.6">✦</text>
+  <text x="1150" y="45" font-size="24" font-family="Georgia" fill="#D4AF37" opacity="0.6">✦</text>
+</svg>
