@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Şehrim: Sivas – Ali Ayyıldız</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="about.html" class="nav-brand">✦ Ali Ayyıldız</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="about.html">Hakkında</a></li>
+    <li><a href="cv.html">Özgeçmiş</a></li>
+    <li><a href="sehrim.html" class="active">Şehrim</a></li>
+    <li><a href="miras.html">Mirasımız</a></li>
+    <li><a href="ilgi-alanlari.html">İlgi Alanlarım</a></li>
+    <li><a href="iletisim.html">İletişim</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrapper">
+
+  <!-- HERO -->
+  <div style="background:linear-gradient(180deg,var(--secondary) 0%,var(--primary) 100%);padding:4rem 0 2rem;border-bottom:1px solid var(--border);">
+    <div class="container">
+      <span class="section-label">Memleketim</span>
+      <h1 style="font-size:clamp(2rem,5vw,4rem);margin-bottom:0.5rem;">
+        Sivas <span style="color:var(--accent)">❤️</span>
+      </h1>
+      <p style="color:var(--muted);font-size:1.05rem;max-width:600px;">
+        Türkiye'nin kalbinde, tarihin ve kültürün iç içe geçtiği, Anadolu'nun
+        kadim şehirlerinden biri. Ben de bu güzel şehrin bir evladıyım.
+      </p>
+    </div>
+  </div>
+
+  <!-- HIZLI BİLGİLER -->
+  <section class="section" style="padding-bottom:2rem;">
+    <div class="container">
+      <div class="row row-cols-2 row-cols-md-3 row-cols-lg-6 g-3">
+        <div class="col"><div class="info-stat fade-in">
+          <div class="number">~654K</div>
+          <div class="label">Nüfus</div>
+        </div>
+        <div class="col"><div class="info-stat fade-in">
+          <div class="number">28.488</div>
+          <div class="label">km² Alan</div>
+        </div>
+        <div class="col"><div class="info-stat fade-in">
+          <div class="number">1075m</div>
+          <div class="label">Rakım</div>
+        </div>
+        <div class="col"><div class="info-stat fade-in">
+          <div class="number">1919</div>
+          <div class="label">Kongre Yılı</div>
+        </div>
+        <div class="col"><div class="info-stat fade-in">
+          <div class="number">77</div>
+          <div class="label">İl Plakası</div>
+        </div>
+        <div class="col"><div class="info-stat fade-in">
+          <div class="number">1</div>
+          <div class="label">UNESCO Mirası</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOTOĞRAF SLİDER -->
+  <section class="section" style="padding-top:1rem;">
+    <div class="container">
+      <span class="section-label">Görsel Tur</span>
+      <h2 class="section-title">Sivas'tan Kareler</h2>
+      <p style="color:var(--muted);margin-bottom:2rem;font-size:0.92rem;">
+        Oklar veya noktalara tıklayarak gezinebilirsiniz.
+      </p>
+
+      <div class="slider-wrapper" id="mainSlider">
+        <div class="slides" id="slides">
+
+          <!-- Slide 1: Divriği Ulu Camii -->
+          <div class="slide">
+            <img
+              src="images/sivas_divrigi.svg"
+              alt="Divriği Ulu Camii ve Darüşşifası"
+              onclick="openSlide(0)"
+            />
+            <div class="slide-caption">
+              <h3>Divriği Ulu Camii ve Darüşşifası</h3>
+              <p>UNESCO Dünya Mirası – 1985 | Yapım: 1228–1229</p>
+            </div>
+          </div>
+
+          <!-- Slide 2: Sivas Kongresi -->
+          <div class="slide">
+            <img
+              src="images/sivas_kongre.svg"
+              alt="Sivas Kongre Müzesi"
+              onclick="openSlide(1)"
+            />
+            <div class="slide-caption">
+              <h3>Sivas Kongre ve Etnografya Müzesi</h3>
+              <p>Kurtuluş Savaşı'nın kıvılcımının yakıldığı tarihi bina – 1919</p>
+            </div>
+          </div>
+
+          <!-- Slide 3: Ulu Camii Sivas -->
+          <div class="slide">
+            <img
+              src="images/sivas_ulucami.svg"
+              alt="Sivas Ulu Camii"
+              onclick="openSlide(2)"
+            />
+            <div class="slide-caption">
+              <h3>Sivas Ulu Camii</h3>
+              <p>12. yüzyıldan kalma Anadolu Selçuklu eseri</p>
+            </div>
+          </div>
+
+          <!-- Slide 4: Sivas şehir merkezi -->
+          <div class="slide">
+            <img
+              src="images/sivas_sehir.svg"
+              alt="Sivas Şehir Manzarası"
+              onclick="openSlide(3)"
+            />
+            <div class="slide-caption">
+              <h3>Sivas Şehir Manzarası</h3>
+              <p>Kızılırmak'ın kucağındaki tarihi kadim şehir</p>
+            </div>
+          </div>
+
+        </div><!-- /slides -->
+
+        <button class="slider-btn prev" onclick="changeSlide(-1)">&#8249;</button>
+        <button class="slider-btn next" onclick="changeSlide(1)">&#8250;</button>
+      </div><!-- /slider-wrapper -->
+
+      <!-- Dots -->
+      <div class="slider-dots" id="sliderDots">
+        <span class="dot active" onclick="goToSlide(0)"></span>
+        <span class="dot" onclick="goToSlide(1)"></span>
+        <span class="dot" onclick="goToSlide(2)"></span>
+        <span class="dot" onclick="goToSlide(3)"></span>
+      </div>
+
+      <!-- Lightbox -->
+      <div id="lightbox" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;" onclick="closeLightbox()">
+        <img id="lightboxImg" src="" alt="" style="max-width:92vw;max-height:90vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,0.7);"/>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider container"></div>
+
+  <!-- GEZİLECEK YERLER -->
+  <section class="section">
+    <div class="container">
+      <span class="section-label">Turizm</span>
+      <h2 class="section-title">Gezilecek Yerler</h2>
+      <div class="row g-4 mt-1">
+
+        <div class="col-12 col-md-6 col-lg-4"><div class="card-custom fade-in h-100">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">🕌</div>
+          <h3 style="font-size:1.05rem;margin-bottom:0.5rem;color:var(--accent);">Divriği Ulu Camii</h3>
+          <p style="font-size:0.88rem;color:var(--muted);">
+            Türkiye'nin ilk UNESCO Dünya Mirası listesine giren eserlerinden biri.
+            Eşsiz taş işçiliğiyle dikkat çeker. Divriği ilçesinde yer alır.
+          </p>
+          <a href="miras.html" style="font-size:0.85rem;color:var(--accent);display:inline-block;margin-top:0.5rem;">Daha fazla →</a>
+        </div>
+
+        <div class="card-custom fade-in">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">🏛️</div>
+          <h3 style="font-size:1.05rem;margin-bottom:0.5rem;color:var(--accent);">Kongre ve Etnografya Müzesi</h3>
+          <p style="font-size:0.88rem;color:var(--muted);">
+            Kurtuluş Savaşı'nın belirleyici kararlarının alındığı 4 Eylül 1919 tarihli
+            Sivas Kongresi'nin yapıldığı tarihi bina.
+          </p>
+        </div>
+
+        <div class="card-custom fade-in">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">🌊</div>
+          <h3 style="font-size:1.05rem;margin-bottom:0.5rem;color:var(--accent);">Sıcak Çermik Kaplıcaları</h3>
+          <p style="font-size:0.88rem;color:var(--muted);">
+            Kaplıca tedavisinin yanı sıra doğal güzellikleriyle de öne çıkan,
+            Sivas'a yakın şifalı sular.
+          </p>
+        </div>
+
+        <div class="card-custom fade-in">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">⛰️</div>
+          <h3 style="font-size:1.05rem;margin-bottom:0.5rem;color:var(--accent);">Koyulhisar Kalesi</h3>
+          <p style="font-size:0.88rem;color:var(--muted);">
+            Yüksek kayalıklar üzerinde konumlanan, Orta Karadeniz'e kapı aralayan
+            eşsiz manzarasıyla tarihi kale.
+          </p>
+        </div>
+
+        <div class="card-custom fade-in">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">🦅</div>
+          <h3 style="font-size:1.05rem;margin-bottom:0.5rem;color:var(--accent);">Hafik Gölü</h3>
+          <p style="font-size:0.88rem;color:var(--muted);">
+            Binlerce göçmen kuşun uğrak yeri olan, doğa tutkunlarının gözdesi
+            tatlı su gölü.
+          </p>
+        </div>
+
+        <div class="card-custom fade-in">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">🍖</div>
+          <h3 style="font-size:1.05rem;margin-bottom:0.5rem;color:var(--accent);">Sivas Mutfağı</h3>
+          <p style="font-size:0.88rem;color:var(--muted);">
+            Madımak yemeği, Sivas köftesi, fırın kebabı ve sütlaç başta olmak üzere
+            zengin yöresel lezzetler.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GENEL BİLGİLER -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="card-custom" style="background:var(--card-bg);border-radius:var(--radius);">
+        <h2 style="font-family:var(--font-head);font-size:1.4rem;margin-bottom:1.5rem;color:var(--accent);">📌 Sivas Hakkında</h2>
+        <p style="color:var(--muted);line-height:1.9;font-size:0.93rem;">
+          Sivas, İç Anadolu Bölgesi'nde yer alan, Türkiye'nin yüzölçümü bakımından
+          en büyük illerinden biridir. Kızılırmak Nehri'nin kıyısına kurulu olan şehir,
+          Orta Asya'dan Anadolu'ya uzanan tarihin derinliklerine ev sahipliği yapmaktadır.
+          Hitit, Frig, Pontus, Roma, Bizans, Danişmendli, Selçuklu ve Osmanlı dönemlerine
+          ait izler taşır. Cumhuriyet tarihinde ise 1919 Sivas Kongresi ile özgürlük
+          mücadelesinin simgesi olmuştur.
+        </p>
+        <p style="color:var(--muted);line-height:1.9;font-size:0.93rem;margin-top:1rem;">
+          İlçeleri arasında Divriği özellikle öne çıkmaktadır. 1985 yılında
+          Divriği Ulu Camii ve Darüşşifası, UNESCO Dünya Mirası Listesi'ne alınmıştır.
+          Şehir, demir çelik sanayi ve hayvancılık alanında Türkiye ekonomisine
+          önemli katkılar sunmaktadır.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <p>© 2026 <a href="about.html">Ali Ayyıldız</a> – Sakarya Üniversitesi Web Teknolojileri Projesi</p>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+  /* ---- SLIDER ---- */
+  let current = 0;
+  const slidesEl = document.getElementById('slides');
+  const totalSlides = 4;
+  const dots = document.querySelectorAll('.dot');
+
+  function updateSlider() {
+    slidesEl.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function changeSlide(dir) {
+    current = (current + dir + totalSlides) % totalSlides;
+    updateSlider();
+  }
+
+  function goToSlide(n) {
+    current = n;
+    updateSlider();
+  }
+
+  /* Otomatik geçiş */
+  let autoPlay = setInterval(() => changeSlide(1), 5000);
+
+  document.getElementById('mainSlider').addEventListener('mouseenter', () => clearInterval(autoPlay));
+  document.getElementById('mainSlider').addEventListener('mouseleave', () => {
+    autoPlay = setInterval(() => changeSlide(1), 5000);
+  });
+
+  /* Dokunmatik destek */
+  let touchStartX = 0;
+  document.getElementById('mainSlider').addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+  });
+  document.getElementById('mainSlider').addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+  });
+
+  /* Lightbox */
+  const slides = document.querySelectorAll('.slide img');
+  function openSlide(idx) {
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightboxImg').src = slides[idx].src;
+    lb.style.display = 'flex';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
