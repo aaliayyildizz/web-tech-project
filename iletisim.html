@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>İletişim – Ali Ayyıldız</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <!-- Vue 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    .validation-result { margin-top:1.2rem; border-radius:8px; overflow:hidden; }
+    .val-item { display:flex; align-items:center; gap:0.75rem; padding:0.6rem 1rem; font-size:0.88rem; }
+    .val-item.ok { background:rgba(40,167,69,0.12); color:#5cb85c; }
+    .val-item.fail { background:rgba(233,69,96,0.12); color:#ff6b6b; }
+    .val-icon { font-size:1.1rem; flex-shrink:0; }
+    .form-section-title { color:var(--accent); font-size:0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin:1.5rem 0 0.75rem; padding-bottom:0.4rem; border-bottom:1px solid var(--border); }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="about.html" class="nav-brand">✦ Ali Ayyıldız</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="about.html">Hakkında</a></li>
+    <li><a href="cv.html">Özgeçmiş</a></li>
+    <li><a href="sehrim.html">Şehrim</a></li>
+    <li><a href="miras.html">Mirasımız</a></li>
+    <li><a href="ilgi-alanlari.html">İlgi Alanlarım</a></li>
+    <li><a href="iletisim.html" class="active">İletişim</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrapper">
+
+  <div style="background:linear-gradient(180deg,var(--secondary) 0%,var(--primary) 100%);padding:4rem 0 2rem;border-bottom:1px solid var(--border);">
+    <div class="container">
+      <span class="section-label">İletişim</span>
+      <h1 style="font-size:clamp(2rem,4vw,3rem);margin-bottom:0.5rem;">Benimle İletişime Geçin</h1>
+      <p style="color:var(--muted);">Form iki farklı doğrulama yöntemiyle denetlenmektedir: Native JavaScript ve Vue.js</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 340px;gap:2.5rem;align-items:start;" class="contact-grid">
+
+        <!-- FORM -->
+        <div>
+          <!-- Vue Uygulaması -->
+          <div id="vueApp">
+            <form id="contactForm" action="php/iletisim.php" method="POST" novalidate>
+
+              <!-- KİŞİSEL BİLGİLER -->
+              <div class="form-section-title">Kişisel Bilgiler</div>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="form-group-custom">
+                  <label class="form-label-custom" for="ad">Ad *</label>
+                  <input v-model="form.ad" type="text" id="ad" name="ad" class="form-control-custom" placeholder="Adınız"/>
+                  <span class="error-text" :class="{visible: errors.ad}">{{ errors.ad }}</span>
+                </div>
+                <div class="form-group-custom">
+                  <label class="form-label-custom" for="soyad">Soyad *</label>
+                  <input v-model="form.soyad" type="text" id="soyad" name="soyad" class="form-control-custom" placeholder="Soyadınız"/>
+                  <span class="error-text" :class="{visible: errors.soyad}">{{ errors.soyad }}</span>
+                </div>
+              </div>
+
+              <div class="form-group-custom">
+                <label class="form-label-custom" for="email">E-posta *</label>
+                <input v-model="form.email" type="email" id="email" name="email" class="form-control-custom" placeholder="ornek@email.com"/>
+                <span class="error-text" :class="{visible: errors.email}">{{ errors.email }}</span>
+              </div>
+
+              <div class="form-group-custom">
+                <label class="form-label-custom" for="telefon">Telefon *</label>
+                <input v-model="form.telefon" type="tel" id="telefon" name="telefon" class="form-control-custom" placeholder="05XX XXX XX XX"/>
+                <span class="error-text" :class="{visible: errors.telefon}">{{ errors.telefon }}</span>
+              </div>
+
+              <div class="form-group-custom">
+                <label class="form-label-custom" for="dogumtarihi">Doğum Tarihi</label>
+                <input v-model="form.dogumtarihi" type="date" id="dogumtarihi" name="dogumtarihi" class="form-control-custom"/>
+              </div>
+
+              <!-- KONU BİLGİLERİ -->
+              <div class="form-section-title">Mesaj Detayları</div>
+
+              <div class="form-group-custom">
+                <label class="form-label-custom" for="konu">Konu *</label>
+                <select v-model="form.konu" id="konu" name="konu" class="form-control-custom">
+                  <option value="">Konu seçiniz...</option>
+                  <option value="isbirligi">İş Birliği Teklifi</option>
+                  <option value="proje">Proje Hakkında</option>
+                  <option value="genel">Genel Soru</option>
+                  <option value="hata">Hata Bildirimi</option>
+                  <option value="diger">Diğer</option>
+                </select>
+                <span class="error-text" :class="{visible: errors.konu}">{{ errors.konu }}</span>
+              </div>
+
+              <div class="form-group-custom">
+                <label class="form-label-custom" for="oncelik">Öncelik *</label>
+                <div style="display:flex;gap:1.5rem;margin-top:0.3rem;flex-wrap:wrap;">
+                  <label class="form-check-custom">
+                    <input type="radio" name="oncelik" value="dusuk" v-model="form.oncelik"/> <span>Düşük</span>
+                  </label>
+                  <label class="form-check-custom">
+                    <input type="radio" name="oncelik" value="orta" v-model="form.oncelik"/> <span>Orta</span>
+                  </label>
+                  <label class="form-check-custom">
+                    <input type="radio" name="oncelik" value="yuksek" v-model="form.oncelik"/> <span>Yüksek</span>
+                  </label>
+                </div>
+                <span class="error-text" :class="{visible: errors.oncelik}">{{ errors.oncelik }}</span>
+              </div>
+
+              <div class="form-group-custom">
+                <label class="form-label-custom" for="mesaj">Mesajınız *</label>
+                <textarea v-model="form.mesaj" id="mesaj" name="mesaj" rows="5" class="form-control-custom" placeholder="Mesajınızı buraya yazın..." style="resize:vertical;"></textarea>
+                <span class="error-text" :class="{visible: errors.mesaj}">{{ errors.mesaj }}</span>
+                <div style="text-align:right;font-size:0.78rem;color:var(--muted);margin-top:0.25rem;">
+                  {{ form.mesaj.length }}/500 karakter
+                </div>
+              </div>
+
+              <!-- TERCİHLER -->
+              <div class="form-section-title">Tercihler</div>
+
+              <div class="form-group-custom">
+                <label class="form-label-custom">Geri Dönüş Kanalı (birden fazla seçilebilir)</label>
+                <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.3rem;">
+                  <label class="form-check-custom">
+                    <input type="checkbox" name="iletisim_kanal[]" value="email" v-model="form.kanallar"/> <span>E-posta</span>
+                  </label>
+                  <label class="form-check-custom">
+                    <input type="checkbox" name="iletisim_kanal[]" value="telefon" v-model="form.kanallar"/> <span>Telefon</span>
+                  </label>
+                  <label class="form-check-custom">
+                    <input type="checkbox" name="iletisim_kanal[]" value="whatsapp" v-model="form.kanallar"/> <span>WhatsApp</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group-custom">
+                <label class="form-label-custom" for="bultenkayit">Bülten Kaydı</label>
+                <label class="form-check-custom">
+                  <input type="checkbox" id="bultenkayit" name="bulten" value="evet" v-model="form.bulten"/>
+                  <span>Yenilikler hakkında e-posta almak istiyorum</span>
+                </label>
+              </div>
+
+              <div class="form-group-custom">
+                <label class="form-check-custom">
+                  <input type="checkbox" id="kvkk" name="kvkk" value="kabul" v-model="form.kvkk"/>
+                  <span>KVKK aydınlatma metnini okudum ve kabul ediyorum *</span>
+                </label>
+                <span class="error-text" :class="{visible: errors.kvkk}">{{ errors.kvkk }}</span>
+              </div>
+
+              <!-- SONUÇ GÖSTERGE ALANI -->
+              <div class="validation-result" v-if="validationResults.length > 0">
+                <div
+                  v-for="r in validationResults"
+                  :key="r.field"
+                  :class="['val-item', r.ok ? 'ok' : 'fail']"
+                >
+                  <span class="val-icon">{{ r.ok ? '✅' : '❌' }}</span>
+                  <span>{{ r.message }}</span>
+                </div>
+              </div>
+
+              <!-- BUTONLAR -->
+              <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;">
+                <button type="button" class="btn-outline-gold" @click="validateNativeJS">
+                  🔎 Native JS ile Doğrula
+                </button>
+                <button type="button" class="btn-gold" @click="validateVue">
+                  ⚡ Vue.js ile Doğrula
+                </button>
+                <button type="submit" class="btn-danger-custom" @click.prevent="submitForm">
+                  📤 Gönder
+                </button>
+              </div>
+
+            </form>
+          </div><!-- /vueApp -->
+        </div>
+
+        <!-- YAN BİLGİ -->
+        <aside>
+          <div class="card-custom" style="margin-bottom:1.5rem;">
+            <h3 style="color:var(--accent);font-size:1rem;margin-bottom:1rem;">📌 Validasyon Farkı</h3>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.8;margin-bottom:1rem;">
+              <strong style="color:var(--light);">Native JS:</strong> Tarayıcı yerleşik JavaScript API'larıyla
+              (querySelector, RegExp) form alanları tek tek kontrol edilir.
+            </p>
+            <p style="font-size:0.85rem;color:var(--muted);line-height:1.8;">
+              <strong style="color:var(--light);">Vue.js:</strong> Reaktif veri bağlama (v-model) ile form
+              durumu sürekli izlenir; doğrulama sonuçları dinamik olarak güncellenir.
+            </p>
+          </div>
+
+          <div class="card-custom" style="margin-bottom:1.5rem;">
+            <h3 style="color:var(--accent);font-size:1rem;margin-bottom:1rem;">📬 Doğrudan İletişim</h3>
+            <p style="font-size:0.88rem;color:var(--muted);line-height:2;">
+              📧 ali.ayyildiz2@ogr.sakarya.edu.tr<br/>
+              🐙 github.com/aaliayyildizz<br/>
+              📍 Sivas / Türkiye
+            </p>
+          </div>
+
+          <div class="card-custom">
+            <h3 style="color:var(--accent);font-size:1rem;margin-bottom:1rem;">⏰ Yanıt Süresi</h3>
+            <p style="font-size:0.88rem;color:var(--muted);line-height:1.8;">
+              Genellikle 24–48 saat içinde yanıt vermeye çalışırım.
+              Acil konularda e-posta tercih edin.
+            </p>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="site-footer">
+  <p>© 2026 <a href="about.html">Ali Ayyıldız</a> – Sakarya Üniversitesi Web Teknolojileri Projesi</p>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+/* ============================================================
+   Vue 3 uygulaması – İletişim Formu
+   ============================================================ */
+const { createApp, ref, reactive } = Vue;
+
+createApp({
+  data() {
+    return {
+      form: {
+        ad: '', soyad: '', email: '', telefon: '',
+        dogumtarihi: '', konu: '', oncelik: '',
+        mesaj: '', kanallar: [], bulten: false, kvkk: false
+      },
+      errors: {},
+      validationResults: []
+    };
+  },
+
+  methods: {
+
+    /* ---- NATIVE JS VALIDASYONU ---- */
+    validateNativeJS() {
+      this.validationResults = [];
+      this.errors = {};
+      let allOk = true;
+
+      // Yardımcı: kontrol ekle
+      const check = (condition, field, okMsg, failMsg) => {
+        if (condition) {
+          this.validationResults.push({ field, ok: true, message: okMsg });
+        } else {
+          this.validationResults.push({ field, ok: false, message: failMsg });
+          this.errors[field] = failMsg;
+          allOk = false;
+        }
+      };
+
+      // Native JS RegEx kontrolleri
+      const emailRx = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      const telRx   = /^(\+90|0)?[5][0-9]{9}$/;
+
+      check(this.form.ad.trim().length >= 2,        'ad',      '✅ Ad geçerli',            'Ad en az 2 karakter olmalı');
+      check(this.form.soyad.trim().length >= 2,     'soyad',   '✅ Soyad geçerli',         'Soyad en az 2 karakter olmalı');
+      check(emailRx.test(this.form.email),          'email',   '✅ E-posta formatı geçerli','Geçerli bir e-posta adresi giriniz');
+      check(telRx.test(this.form.telefon.replace(/\s/g,'')), 'telefon', '✅ Telefon geçerli', 'Geçerli bir Türkiye cep numarası girin (05XX...)');
+      check(this.form.konu !== '',                  'konu',    '✅ Konu seçildi',           'Lütfen bir konu seçiniz');
+      check(this.form.oncelik !== '',               'oncelik', '✅ Öncelik seçildi',        'Lütfen öncelik seviyesi seçiniz');
+      check(this.form.mesaj.trim().length >= 10,    'mesaj',   '✅ Mesaj yeterli uzunlukta','Mesaj en az 10 karakter olmalı');
+      check(this.form.kvkk,                         'kvkk',    '✅ KVKK onaylandı',        'KVKK metnini kabul etmeniz gerekiyor');
+
+      if (allOk) {
+        this.validationResults.unshift({ field:'summary', ok:true, message:'🎉 Tüm alanlar Native JS ile başarıyla doğrulandı! Gönder butonuna basabilirsiniz.' });
+      }
+    },
+
+    /* ---- VUE.JS VALIDASYONU ---- */
+    validateVue() {
+      this.validationResults = [];
+      this.errors = {};
+      let allOk = true;
+
+      const rules = [
+        { field:'ad',      value: this.form.ad,         test: v => v.trim().length >= 2,        ok:'Ad geçerli', fail:'Ad zorunlu (min. 2 karakter)' },
+        { field:'soyad',   value: this.form.soyad,      test: v => v.trim().length >= 2,        ok:'Soyad geçerli', fail:'Soyad zorunlu' },
+        { field:'email',   value: this.form.email,      test: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v), ok:'E-posta geçerli', fail:'Geçersiz e-posta formatı' },
+        { field:'telefon', value: this.form.telefon,    test: v => /^[0-9\s\+]{10,13}$/.test(v), ok:'Telefon geçerli', fail:'Sadece rakam girilmeli (10-13 hane)' },
+        { field:'konu',    value: this.form.konu,       test: v => v !== '',                    ok:'Konu seçildi', fail:'Konu seçimi zorunlu' },
+        { field:'oncelik', value: this.form.oncelik,    test: v => v !== '',                    ok:'Öncelik belirlendi', fail:'Öncelik seçimi zorunlu' },
+        { field:'mesaj',   value: this.form.mesaj,      test: v => v.trim().length >= 10,       ok:'Mesaj yeterince uzun', fail:'Mesaj en az 10 karakter olmalı' },
+        { field:'kvkk',    value: this.form.kvkk,       test: v => v === true,                  ok:'KVKK onaylandı', fail:'KVKK onayı zorunlu' },
+      ];
+
+      rules.forEach(r => {
+        const ok = r.test(r.value);
+        this.validationResults.push({ field: r.field, ok, message: ok ? r.ok : r.fail });
+        if (!ok) { this.errors[r.field] = r.fail; allOk = false; }
+      });
+
+      if (allOk) {
+        this.validationResults.unshift({ field:'summary', ok:true, message:'🚀 Vue.js validasyonu başarılı! Tüm alanlar doğru.' });
+      } else {
+        this.validationResults.unshift({ field:'summary', ok:false, message:`⚠️ Vue.js: ${rules.filter(r => !r.test(r.value)).length} hata bulundu.` });
+      }
+    },
+
+    /* ---- GÖNDER ---- */
+    submitForm() {
+      // Önce Vue validasyonu yap
+      this.validateVue();
+      const hasError = this.validationResults.some(r => !r.ok);
+      if (hasError) {
+        alert('Lütfen önce formu doğrulayın ve hataları düzeltin.');
+        return;
+      }
+      document.getElementById('contactForm').submit();
+    }
+  }
+}).mount('#vueApp');
+
+/* Responsive contact grid */
+function adjustContact() {
+  const g = document.querySelector('.contact-grid');
+  if (g) g.style.gridTemplateColumns = window.innerWidth < 900 ? '1fr' : '1fr 340px';
+}
+adjustContact();
+window.addEventListener('resize', adjustContact);
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
